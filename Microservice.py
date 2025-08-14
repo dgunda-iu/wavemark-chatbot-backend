@@ -20,8 +20,9 @@ import glob
 from tqdm import tqdm
 import pickle
 import uuid
-from langchain.vectorstores import Chroma
-from langchain.vectorstores.azuresearch import AzureSearch
+from langchain_chroma import Chroma
+#from langchain.vectorstores import Chroma
+#from langchain.vectorstores.azuresearch import AzureSearch
 from langchain.storage import InMemoryStore
 from langchain.schema.document import Document
 # from langchain.embeddings import AzureOpenAIEmbeddings, OpenAIEmbeddings
@@ -78,8 +79,9 @@ images_b64 = [e.metadata.image_base64 for chunk in chunks if chunk.metadata.orig
 
 # Define the API endpoint for chat
 load_dotenv()
-AZURE_OPENAI_API_KEY=os.getenv["AZURE_OPENAI_API_KEY"]
-AZURE_OPENAI_ENDPOINT=os.getenv["AZURE_OPENAI_ENDPOINT"]
+load_dotenv(dotenv_path=".env", encoding="utf-8")
+AZURE_OPENAI_API_KEY=os.getenv("AZURE_OPENAI_API_KEY")
+AZURE_OPENAI_ENDPOINT=os.getenv("AZURE_OPENAI_ENDPOINT")
 
 
 
