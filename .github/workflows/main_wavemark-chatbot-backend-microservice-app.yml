@@ -58,4 +58,4 @@ jobs:
         with:
           app-name: 'wavemark-chatbot-backend-microservice-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4070D5C8C6AD4B5DA098F1F12FBA0ED4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E52D65A02C7423FBA6E184E2ABAE36A }}
