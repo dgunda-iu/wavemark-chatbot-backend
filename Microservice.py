@@ -1,12 +1,21 @@
+# Azure App Service SQLite fix - MUST be first
 import sys
+import os
 
-try:
-    import psqlite3
-    import sqlite3
-    sys.modules["sqlite3"] = psqlite3
-    os.environ['CHROMA_DB_IMPL'] = 'duckdb+parquet'
-except ImportError:
-    pass
+# This is the working solution for Azure App Service
+def fix_sqlite_for_azure():
+    try:
+        import pysqlite3
+        import sqlite3
+        # Replace sqlite3 with pysqlite3
+        sys.modules["sqlite3"] = pysqlite3
+        # Override version info
+        pysqlite3.version = "2.6.0"
+        pysqlite3.sqlite_version = "3.45.0"
+    except ImportError:
+        pass
+
+fix_sqlite_for_azure()
 
 
 from fastapi import FastAPI
