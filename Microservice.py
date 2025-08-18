@@ -1,3 +1,12 @@
+import sys
+
+try:
+    import psqlite3
+    sys.modules["sqlite3"] = psqlite3
+except ImportError:
+    pass
+
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from langgraph.checkpoint.memory import MemorySaver
