@@ -2,7 +2,9 @@ import sys
 
 try:
     import psqlite3
+    import sqlite3
     sys.modules["sqlite3"] = psqlite3
+    os.environ['CHROMA_DB_IMPL'] = 'duckdb+parquet'
 except ImportError:
     pass
 
